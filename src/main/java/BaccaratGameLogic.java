@@ -1,12 +1,18 @@
-//Class implements several methods for working with the game logic for Baccarat
-
+/*!
+    @file BaccaratGameLogic.java
+*/
 import java.util.ArrayList;
 
+/*! 
+    @brief Implements several methods for working with the game logic for the Baccarat game.
+*/
 public class BaccaratGameLogic {
 
-    //Determines who won the game of Baccarat.
-    //Takes in the player's and banker's hands as argument
-    //Returns either "Player", "Banker", or "Draw", depending on the result of the game
+    /*! @brief Determines who won the game of Baccarat.
+        @param hand1 The player's hand.
+        @param hand2 The banker's hand.
+        @returns Either "Player", "Banker", or "Draw", depending on the result of the game.
+    */
     public String whoWon(ArrayList<Card> hand1, ArrayList<Card> hand2){
         int playHandTotal = handTotal(hand1);
         int bankerHandTotal = handTotal(hand2);
@@ -19,8 +25,10 @@ public class BaccaratGameLogic {
             return "Draw";
     }
 
-    //Calculates the total score for a hand
-    //Takes in the hand as an argument, and returns the score
+    /*! @brief Calculates the total score for a hand according to the Baccarat rules.
+        @param hand The hand to calculate the score with.
+        @returns The calculated score.
+    */
     public int handTotal(ArrayList<Card> hand){
         int total = 0;
         for (Card card : hand){
@@ -32,10 +40,11 @@ public class BaccaratGameLogic {
         return total % 10;
     }
 
-    //Determines if the banker needs to draw a third card
-    //Takes in the bankers hand, and either the card drawn by the play
-    //or null if the player did not draw a card as arguments
-    //Returns true if the banker should draw a third card and false otherwise
+    /*! @brief Determines if the banker should draw a third card.
+        @param hand The banker's hand.
+        @param playerCard The card drawn by the player. If the player did not draw a card, this argument is null.
+        @returns True if the banker should draw a third card and false otherwise.
+    */
     public boolean evaluateBankerDraw(ArrayList<Card> hand, Card playerCard){
         if (playerCard == null)
             return handTotal(hand) < 6;
@@ -57,9 +66,10 @@ public class BaccaratGameLogic {
         }
     }
 
-    //Determines if the player should draw a third card
-    //Takes in the player's hand as an argument
-    //Returns true if the player should draw a third card and false otherwise
+    /*! @brief Determines if the player should draw a third card.
+        @param hand The player's hand.
+        @returns True if the player should draw a third card and false otherwise.
+    */
     public boolean evaluatePlayerDraw(ArrayList<Card> hand){
         return handTotal(hand) < 6;
     }

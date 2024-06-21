@@ -1,10 +1,17 @@
+/*!
+    @file Card.java
+*/
+
+
+/*!
+    @brief A custom class to hold information about the cards.
+*/
 public class Card {
 
-    String suite;
-    int value;
+    String suite; /**< Hearts, Diamonds, Clubs, or Spades. */
+    int value; /**< Integers from 1-13. */
 
-    // suite: Hearts, Diamonds, Clubs, Spades
-    // value: numbers 1-13
+    
     public Card(String theSuite, int theValue) {
         this.suite = theSuite;
         this.value = theValue;

@@ -1,5 +1,10 @@
-// Name:Chris Wood, NetID:cwood35
-// Name:Ana Theys,  NatID:athey3
+/*!
+    @file BaccaratGame.java
+*/
+
+// Name: Chris Wood, NetID:cwood35
+
+// Name: Ana Theys,  NetID:athey3
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
@@ -27,15 +32,19 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-
+/*! 
+	@brief The class to play the game of Baccarat.
+	Contains the code required to create the UI elements and call the 
+			functions from the BaccaratGameLogic class.
+*/
 public class BaccaratGame extends Application {
-	ArrayList<Card> playerHand;
-	ArrayList<Card> bankerHand;
-	BaccaratDealer theDealer;
-	BaccaratGameLogic gameLogic;
-	double currentBet;
-	double totalWinnings;
-	String betPlacedOn;
+	ArrayList<Card> playerHand; /**< The player's hand of cards, stored in an ArrayList. */
+	ArrayList<Card> bankerHand; /**< The banker's hand of cards, stored in an ArrayList. */
+	BaccaratDealer theDealer; /**< An instace of the BaccaratDealer class to call the dealer functions. */
+	BaccaratGameLogic gameLogic; /**< An instance of the BaccaratGameLogic class to call the logic functions. */
+	double currentBet; /**< How much money the player has currently bet on the round. */
+	double totalWinnings; /**< How much money the player has won (or lost) over the course of the game so far. */
+	String betPlacedOn; /**< Who the player has placed their bet on. Either "Player", "Banker", or "Draw". */
 
 	// Start scene objects
 	Text titleText;
@@ -87,8 +96,8 @@ public class BaccaratGame extends Application {
 	static final double dealBetweenCardDelay = 0.33;
 	static final int cardWidth = 120;
 	static final int cardHeight = 175;
-	// Map of images of all 52 playing cards. Suite is map key, card number is ArrayList index
-	Map<String, ArrayList<Image>> cardMap;
+
+	Map<String, ArrayList<Image>> cardMap; /**< Map of images of all 52 playing cards. Suite is map key, card number is ArrayList index. */
 
 
 	// ----------------------------------------------------------------------
@@ -285,6 +294,10 @@ public class BaccaratGame extends Application {
 
 	} // end start()
 
+
+	/*! 
+		@brief Populates the map with images of the playing cards. 
+	*/
 	public void populateCardMap(){
 		cardMap = new TreeMap<>();
 		String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
@@ -298,7 +311,11 @@ public class BaccaratGame extends Application {
 		}
 	}
 
+
 	//-----Start scene-----//
+	/*! 
+		@brief The code to create and configure the UI elements for the start scene. 
+	*/
 	public Scene createStartScene() {
 		titleText = new Text("Baccarat");
 		// titleText.setStyle("-fx-font-size: 150");
@@ -323,6 +340,9 @@ public class BaccaratGame extends Application {
 
 
 	//-----Menu Bar-----//
+	/*! 
+		@brief The code to create and configure the UI elements for the menu bar for the start scene. 
+	*/
 	public void createMenuBar() {
 		mainMenuBar = new MenuBar();
 
@@ -338,6 +358,9 @@ public class BaccaratGame extends Application {
 		mainMenuBar.getMenus().add(menuMenu);
 
 	}
+	/*! 
+		@brief The code to create and configure the UI elements for the menu bar for the betting scene. 
+	*/
 	public void createMenuBar2() {
 		mainMenuBar2 = new MenuBar();
 
@@ -356,6 +379,9 @@ public class BaccaratGame extends Application {
 
 
 	//-----Betting scene-----//
+	/*! 
+		@brief The code to create and configure the UI elements for the betting scene. 
+	*/
 	public Scene createBettingScene() {
 		// left side
 		selectBetText = new Text("Add to bet:");
@@ -423,6 +449,10 @@ public class BaccaratGame extends Application {
 		return bettingScene;
 	} // end createBettingScene()
 
+
+	/*! 
+		@brief The code to reset the betting scene for the next round. 
+	*/
 	private void resetBettingScene() {
 		betAmount.clear();
 		selectPlayer.setDisable(false);
@@ -435,6 +465,9 @@ public class BaccaratGame extends Application {
 
 
 	//-----Play scene-----//
+	/*! 
+		@brief The code to create and configure the UI elements for the play scene. 
+	*/
 	public Scene createPlayScene(){
 		//Pause transitions
 		firstDealPause = new PauseTransition(Duration.seconds(dealBetweenCardDelay));
@@ -515,6 +548,9 @@ public class BaccaratGame extends Application {
 	}// end createPlayScene
 
 
+	/*! 
+		@brief The code to reset the play scene for the next round. 
+	*/
 	private void resetPlayScene() {
 		playerHand = null;
 		bankerHand = null;
@@ -537,8 +573,11 @@ public class BaccaratGame extends Application {
 		thisButton.setOnAction(firstDrawEvent);
 	}
 
-	//Evaluates the amount won or lost
-	//Returns the winnings. A loss is represented as winning a negative amount
+
+	/*! 
+		@brief Evaluates the amount won or lost. 
+		@returns The winnings. A loss is represented as winning a negative amount.
+	*/
 	public double evaluateWinnings(){
 		double winnings;
 		String winner = gameLogic.whoWon(playerHand, bankerHand);
@@ -557,8 +596,11 @@ public class BaccaratGame extends Application {
 		return winnings;
 	} // end evaluateWinnings()
 
-	//Called whenever a round ends. Evaluates the winnings, displays the result,
-	//and sets up button for replaying the game
+
+	/*! 
+		@brief Called whenever a round ends.  
+		Evaluates the winnings, displays the result, and sets up button for replaying the game.
+	*/
 	public void endRound(){
 		//Evaluate winnings
 		totalWinnings += evaluateWinnings();
@@ -593,6 +635,7 @@ public class BaccaratGame extends Application {
 		//Set button for replaying
 		dealAndPlayAgainButton.setOnAction(replayEvent);
 		dealAndPlayAgainButton.setText("Replay");
-	}
+	} // end endRound()
 
+	
 } // end class

@@ -1,10 +1,19 @@
+/*!
+    @file BaccaratDealer.java
+*/
+
 import java.util.ArrayList;
 import java.util.Collections;
 
+/*!
+    @brief A class to act as the dealer in the game Baccarat.
+*/
 public class BaccaratDealer {
-    ArrayList<Card> deck;
+    ArrayList<Card> deck; /**< The deck of playing cards, stored in an ArrayList. */
 
-    // generates a new standard 52-card deck of Card objects
+    /*! 
+        Generates a new standard 52-card deck of Card objects.
+    */
     public void generateDeck() {
         deck = new ArrayList<>();
 
@@ -27,8 +36,9 @@ public class BaccaratDealer {
 
     } // end generateDeck()
 
-
-    // deals first two cards of the deck and returns them in an ArrayList
+    /*! 
+        Deals first two cards of the deck and returns them in an ArrayList.
+    */
     public ArrayList<Card> dealHand() {
         ArrayList<Card> result = new ArrayList<>();
 
@@ -42,7 +52,9 @@ public class BaccaratDealer {
     } // end dealHand()
 
 
-    // draws the top card off the deck and returns it
+    /*! 
+        Draws the top card off the deck and returns it.
+    */
     public Card drawOne() {
         Card result = deck.get(0);
         deck.remove(0);
@@ -51,14 +63,18 @@ public class BaccaratDealer {
     } // end drawOne()
 
 
-    // generates a new deck of 52 cards and randomizes the order
+    /*! 
+        Generates a new deck of 52 cards and randomizes the order.
+    */
     public void shuffleDeck() {
         generateDeck();
         Collections.shuffle(deck);
     } // end shuffleDeck()
 
 
-    // returns the current size of the deck
+    /*! 
+        Returns the current size of the deck.
+    */
     public int deckSize() {
         if (deck == null) {
             return 0;

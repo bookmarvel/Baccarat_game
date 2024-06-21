@@ -1,15 +1,23 @@
-//Tester file for the BaccaratGameLogic class
+/*!
+    @file BaccaratGameLogicTest.java
+*/
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-
+/*!
+    @brief Contains the code to test the BaccaratGameLogic class and methods.
+*/
 public class BaccaratGameLogicTest {
     BaccaratGameLogic gameLogic = new BaccaratGameLogic();
 
     @Test
+    /*!
+        @brief Tests the ability to calculate the score of a hand with two cards.
+        @see handTotal()
+    */
     void handTotal2Cards(){
         ArrayList<Card> hand = new ArrayList<>();
         hand.add(new Card("Diamonds", 7));
@@ -19,6 +27,10 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to calculate the score of a hand with three cards.
+        @see handTotal()
+    */
     void handTotal3Cards(){
         ArrayList<Card> hand = new ArrayList<>();
         hand.add(new Card("Heart", 9));
@@ -29,6 +41,10 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate who won when the player wins.
+        @see whoWon()
+    */
     void whoWonPlayerWin(){
         ArrayList<Card> playerHand = new ArrayList<>();
         ArrayList<Card> bankerHand = new ArrayList<>();
@@ -43,6 +59,10 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate who won when the banker wins.
+        @see whoWon()
+    */
     void whoWonBankerWin(){
         ArrayList<Card> playerHand = new ArrayList<>();
         ArrayList<Card> bankerHand = new ArrayList<>();
@@ -57,6 +77,10 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate when there is a draw.
+        @see whoWon()
+    */
     void whoWonDraw(){
         ArrayList<Card> playerHand = new ArrayList<>();
         ArrayList<Card> bankerHand = new ArrayList<>();
@@ -70,6 +94,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the player should draw a card.
+        In this scenario the player should draw a card.
+        @see evaluatePlayerDraw()
+    */
     void evaluatePlayerDrawValidDraw(){
         ArrayList<Card> playerHand = new ArrayList<>();
         playerHand.add(new Card("Diamonds", 5));
@@ -79,6 +108,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the player should draw a card.
+        In this scenario the player should not draw a card.
+        @see evaluatePlayerDraw()
+    */
     void evaluatePlayerDrawNoDraw(){
         ArrayList<Card> playerHand = new ArrayList<>();
         playerHand.add(new Card("Hearts", 5));
@@ -88,6 +122,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the banker should draw a card.
+        In this scenario the player did not draw a card and the banker should draw a card.
+        @see evaluateBankerDraw()
+    */
     void evaluateBankerDrawValidDrawNoPlayerDraw(){
         ArrayList<Card> bankerHand = new ArrayList<>();
         bankerHand.add(new Card("Hearts", 9));
@@ -97,6 +136,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the banker should draw a card.
+        In this scenario the player did not draw a card and the banker should not draw a card.
+        @see evaluateBankerDraw()
+    */
     void evaluateBankerDrawNoDrawNoPlayerDraw(){
         ArrayList<Card> bankerHand = new ArrayList<>();
         bankerHand.add(new Card("Clubs", 8));
@@ -106,6 +150,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the banker should draw a card.
+        In this scenario the player did draw a card and the banker should draw a card.
+        @see evaluateBankerDraw()
+    */
     void evaluateBankerDrawValidDrawWithPlayerDraw(){
         ArrayList<Card> bankerHand = new ArrayList<>();
         bankerHand.add(new Card("Clubs", 10));
@@ -115,6 +164,11 @@ public class BaccaratGameLogicTest {
     }
 
     @Test
+    /*!
+        @brief Tests the ability to correctly calculate if the banker should draw a card.
+        In this scenario the player did draw a card and the banker should not draw a card.
+        @see evaluateBankerDraw()
+    */
     void evaluateBankerDrawNoDrawWithPlayerDraw(){
         ArrayList<Card> bankerHand = new ArrayList<>();
         bankerHand.add(new Card("Clubs", 2));
