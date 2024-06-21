@@ -1,3 +1,7 @@
+/*!
+    @file BaccaratDealerTest.java
+*/
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -10,11 +14,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 
+/*!
+    @brief Contains the code to test the BaccaratDealer class and methods.
+    Contains two tests per method
+*/
 public class BaccaratDealerTest {
     // two tests per method
 
 
     @Test
+    /*!
+        @brief Tests the function to generate the deck of cards.
+        @see generateDeck()
+    */
     void generateDeckTest() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
@@ -43,6 +55,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to deal a hand of cards.
+        @see dealHand()
+        @see dealHandTest2()
+    */
     void dealHandTest1() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
@@ -61,6 +78,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to deal a hand of cards.
+        @see dealHand()
+        @see dealHandTest1()
+    */
     void dealHandTest2() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
@@ -83,6 +105,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to draw one card from the top of the deck.
+        @see drawOne()
+        @see testDrawOne2()
+    */
     void testDrawOne1() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
@@ -105,6 +132,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to draw one card from the top of the deck.
+        @see drawOne()
+        @see testDrawOne1()
+    */
     void testDrawOne2() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
@@ -151,6 +183,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to shuffle the deck.
+        @see shuffleDeck()
+        @see testShuffleDeck2()
+    */
     void testShuffleDeck1() {
         BaccaratDealer defaultDealer = new BaccaratDealer();
         defaultDealer.generateDeck();
@@ -171,6 +208,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to shuffle the deck.
+        @see shuffleDeck()
+        @see testShuffleDeck1()
+    */
     void testShuffleDeck2() {
         BaccaratDealer defaultDealer = new BaccaratDealer();
         defaultDealer.generateDeck();
@@ -192,6 +234,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to get the size of the deck.
+        @see deckSize()
+        @see testDeckSize2()
+    */
     void testDeckSize1() {
         BaccaratDealer testDealer = new BaccaratDealer();
 
@@ -204,6 +251,11 @@ public class BaccaratDealerTest {
     }
 
     @Test
+    /*!
+        @brief Tests the function to get the size of the deck.
+        @see deckSize()
+        @see testDeckSize2()
+    */
     void testDeckSize2() {
         BaccaratDealer testDealer = new BaccaratDealer();
         testDealer.generateDeck();
